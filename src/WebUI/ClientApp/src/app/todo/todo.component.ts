@@ -6,7 +6,7 @@ import {
   TodoListDto, TodoItemDto, PriorityLevelDto,
   CreateTodoListCommand, UpdateTodoListCommand,
   CreateTodoItemCommand, UpdateTodoItemDetailCommand,
-  UpdateTodoItemCommand
+  UpdateTodoItemCommand, UpdateTodoItemBackgroundColorCommand
 } from '../web-api-client';
 
 @Component({
@@ -163,6 +163,19 @@ export class TodoComponent implements OnInit {
       backgroundColor: item.backgroundColor
     });
     this.itemsClient.updateItemDetails(item.id, command).subscribe(
+      () => {
+        this.itemDetailsModalRef.hide();
+        this.loadLists();
+      },
+      error => console.error(error)
+    );
+  }
+  updateBackgroundColor(item: any): void {
+    const command = new UpdateTodoItemBackgroundColorCommand({
+      id: item.id,
+      backgroundColor: item.backgroundColor
+    });
+    this.itemsClient.updateBackgroundColor(item.id, command).subscribe(
       () => {
         this.itemDetailsModalRef.hide();
         this.loadLists();

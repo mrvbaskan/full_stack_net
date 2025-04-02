@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="todo-item-actions">
-              <input type="color" [(ngModel)]="item.backgroundColor" (change)="updateItem(item)" class="form-control form-control-color" />
+              <input type="color" [(ngModel)]="item.backgroundColor" (change)="updateBackgroundColor(item)" class="form-control form-control-color" />
               <button class="btn btn-default" title="Details..." (click)="showItemDetailsModal(itemDetailsModalTemplate, item)">
                 <i class="bi bi-pencil"></i>
               </button>
